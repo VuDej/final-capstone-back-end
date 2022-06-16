@@ -1,7 +1,8 @@
 class Car < ApplicationRecord
   has_many :reservations, dependent: :destroy
-  has_many :users, through: :reservations
   has_one_attached :image
+
+  belongs_to :users
 
   validates :name, presence: true, length: { maximum: 20 }
   validates :price, presence: true, numericality: { only_integer: true }

@@ -12,7 +12,7 @@ class Api::V1::CarsController < ApplicationController
   end
 
   def create
-    @car = currentuser.cars.new(car_params)
+    @car = current_user.cars.new(car_params)
 
     if @car.save
       render :create, status: 201
