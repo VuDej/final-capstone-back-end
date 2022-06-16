@@ -5,10 +5,15 @@ Rails.application.routes.draw do
     sign_out: 'logout',
     registration: 'signup'
   },
+  
   controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations'
   }
 
-  get '/current_user', to: 'current_user#index'
+  namespace :api do
+    namespace :v1 do
+      resources :cars, only: [:index, :show, :create, :update, :destroy]
+    end
+  end
 end
