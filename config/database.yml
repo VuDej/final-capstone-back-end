@@ -25,6 +25,7 @@ development:
   <<: *default
   database: final_capstone_back_end_development
 
+
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
@@ -84,3 +85,4 @@ production:
   database: final_capstone_back_end_production
   username: final_capstone_back_end
   password: <%= ENV["FINAL_CAPSTONE_BACK_END_DATABASE_PASSWORD"] %>
+  

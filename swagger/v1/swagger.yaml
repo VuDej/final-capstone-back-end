@@ -1,0 +1,257 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+components:
+  securitySchemes:
+    bearer_auth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+paths:
+  "/api/v1/cars":
+    get:
+      summary: list cars
+      tags:
+      - Cars
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      responses:
+        '401':
+          description: Invalid request
+    post:
+      summary: Create Car
+      tags:
+      - Cars
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      responses:
+        '401':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                car_model:
+                  type: string
+                price_per_day:
+                  type: integer
+                description:
+                  type: string
+                photo:
+                  type: string
+                car_type:
+                  type: string
+                transmission:
+                  type: string
+                user_id:
+                  type: integer
+              required:
+              - name
+              - fuel
+              - seats
+              - navigation
+              - car_type
+              - photo
+              - price_for_day
+              - city
+  "/api/v1/cars/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show car
+      tags:
+      - Cars
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      responses:
+        '401':
+          description: authentication failed
+        '200':
+          description: successful
+    delete:
+      summary: Delete Car
+      tags:
+      - Cars
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      responses:
+        '401':
+          description: authentication failed
+        '200':
+          description: successful
+  "/api/v1/reservations":
+    post:
+      summary: Create Reservations
+      tags:
+      - Reservations
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      responses:
+        '401':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                pick_up_day:
+                  type: string
+                  format: date
+                  required: true
+                return_day:
+                  type: string
+                  format: date
+                  required: true
+                pick_up_city:
+                  type: string
+                return_city:
+                  type: string
+              required:
+              - pick_up_date
+              - drop_off_date
+              - pick_up_city
+              - return_city
+    get:
+      summary: List of reservations
+      tags:
+      - Reservations
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      responses:
+        '401':
+          description: authentication failed
+  "/api/v1/reservations/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    delete:
+      summary: Delete Reservation
+      tags:
+      - Reservations
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      responses:
+        '401':
+          description: authentication failed
+        '200':
+          description: successful
+  "/signup":
+    post:
+      summary: Sign up
+      tags:
+      - register user
+      parameters: []
+      responses:
+        '200':
+          description: sign up
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+              required:
+              - name
+              - email
+              - password
+  "/login":
+    post:
+      summary: Log in
+      tags:
+      - user session
+      parameters: []
+      responses:
+        '200':
+          description: log in
+        '401':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+              required:
+              - email
+              - password
+  "/logout":
+    delete:
+      summary: " delete session"
+      tags:
+      - Logout
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      responses:
+        '401':
+          description: authentication failed
+servers:
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: localhost:3001
