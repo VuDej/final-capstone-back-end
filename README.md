@@ -68,7 +68,7 @@ This is a car rental website that allows you to view  a variety of cars and book
 
 ## Live Demo
 
-(In progress)
+[Go live](https://book-a-car.herokuapp.com/)
 
 ## Getting Started 🏁
 
