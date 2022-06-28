@@ -68,7 +68,15 @@ This is a car rental website that allows you to view  a variety of cars and book
 
 ## Live Demo
 
-[Go live](https://book-a-car.herokuapp.com/)
+[Go Live](https://book-a-car.herokuapp.com/)
+
+## Kanban board
+
+[Kanban board](https://github.com/VuDej/final-capstone-back-end/projects/1)
+
+[Initial state of Kanban board](https://github.com/VuDej/final-capstone-back-end/issues/19)
+
+The final number of team members is 5. There were no changes in the team during the project.
 
 ## Getting Started 🏁
 
@@ -91,8 +99,6 @@ You will be needing:
   ```bash
   https://www.postgresql.org/download/
   ```
-
-
 #### Setting Up PostgreSQL
 
 - The postgres installation doesn't setup a user for you, so you'll need to follow these steps to create a user with permission to create databases. You can skip this if this is not your first time using PostgreSQL
