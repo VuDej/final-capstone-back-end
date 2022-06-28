@@ -76,7 +76,7 @@ This is a car rental website that allows you to view  a variety of cars and book
 
 [Initial state of Kanban board](https://github.com/VuDej/final-capstone-back-end/issues/19)
 
-The final number of team members is 5. There were no changes in the team during the project.
+The final number of team members is 5. There were no changes in the team.
 
 ## Getting Started 🏁
 
